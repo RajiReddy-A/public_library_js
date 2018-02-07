@@ -11,6 +11,7 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import io.public_library.book.Book;
@@ -26,6 +27,10 @@ public class Person {
 	@Column(name="mobile")
 	private String mobile;
 	
+	@JsonIgnore
+	@Column(name="password")
+	private String password;
+	
 	@ManyToMany(cascade = CascadeType.ALL)
 	@JoinTable(name="bookandperson",
 		joinColumns=@JoinColumn(name="personName"),
@@ -36,10 +41,11 @@ public class Person {
 		
 	}
 	
-	public Person(String personName, String mobile) {
+	public Person(String personName, String mobile, String password) {
 		super();
 		this.personName = personName;
 		this.mobile = mobile;
+		this.password = password;
 		
 	}
 
@@ -57,6 +63,14 @@ public class Person {
 
 	public void setMobile(String mobile) {
 		this.mobile = mobile;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
 	}
 
 	@JsonIgnoreProperties("listOfPersons")

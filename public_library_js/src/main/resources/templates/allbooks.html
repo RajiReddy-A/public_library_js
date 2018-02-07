@@ -2,15 +2,35 @@
 <html>
 
 	<head>
-		<link rel="stylesheet" type="text/css" href="css/styling.css">
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-		<script type="text/javascript" src="js/allbooks.js"></script>
+		<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
 	</head>
 	
 	<body>
-		<div id="allbooks">
-			
-		</div>
+	
+		<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+			<ul class="navbar-nav">
+			    <li class="nav-item active">
+			      <a class="nav-link" href="#">Link</a>
+			    </li>
+			 </ul>
+		</nav>
+		
+		<table class="table">
+		  <thead>
+		    <tr>
+		      <th>BOOK</th>
+		      <th>AUTHOR</th>
+		      <th>TOTAL COPIES</th>
+		      <th>AVAILABLE COPIES</th>
+		    </tr>
+		  </thead>
+		  <tbody id="allbooks">
+		  
+		  </tbody>
+		</table>
+		
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+		<script type="text/javascript" src="js/allbooks.js"></script>
 	</body>
 	
 </html>

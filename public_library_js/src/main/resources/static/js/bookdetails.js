@@ -9,21 +9,22 @@ $(document).ready(function() {
 	theBook = decodeURIComponent(theBook);
 	console.log(theBook);
 	
-	var theUrl = "https://thepubliclibrary.herokuapp.com/apis/books/"+theBook;
+	var theUrl = "http://localhost:8080/apis/books/"+theBook;
 	
 	$.ajax({
 		url: theUrl
 	}).then(function(data){
 		
-		$("#bookdetails").append("Book: "+data.bookName+"<br>");
-		$("#bookdetails").append("Author: "+data.author+"<br>");
-		$("#bookdetails").append("Total copies: "+data.copiesTotal+"<br>");
-		$("#bookdetails").append("Available copies: "+data.copiesAvailable+"<br><br>");
-		$("#bookdetails").append("<b>BORROWED BY</b><br>");
+		$("#bookName").append(data.bookName);
+		$("#author").append("Author: "+data.author);
+		$("#totalCopies").append("Total copies: "+data.copiesTotal);
+		$("#availableCopies").append("Available copies: "+data.copiesAvailable);
 		
+		var i=0;
 		for(let value of data.listOfPersons){
 			
-			$("#bookdetails").append("<a href='/persons?person="+value.personName+"'>"+value.personName+"</a><br>");
+			$("#personList").append("<th scope='row'>"+i+"</th><tr><td><a href='/persons?person="+value.personName+"'>"+value.personName+"</a></td><td>"+value.mobile+"</td></tr>");
+			i=i+1;
 			
 		}
 		

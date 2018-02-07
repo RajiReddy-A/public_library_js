@@ -1,13 +1,12 @@
 $(document).ready(function() {
   
 	$.ajax({
-		url: "https://thepubliclibrary.herokuapp.com/apis/allbooks"
+		url: "http://localhost:8080/apis/allbooks"
 	}).then(function(data){
 		
 		for(let value of data){
 			console.log(value);
-			$("#allbooks").append("<br>");
-			$("#allbooks").append("<a href='/books?book="+value.bookName+"'>"+value.bookName+"</a>"+" is written by "+value.author+". Total copies: "+value.copiesTotal+", Available copies: "+value.copiesAvailable);
+			$("#allbooks").append("<tr><td><a href='/books?book="+value.bookName+"'>"+value.bookName+"</a></td><td>"+value.author+"</td><td>"+value.copiesTotal+"</td><td>"+value.copiesAvailable+"</td></tr>");
 			
 		}
 	});

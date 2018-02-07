@@ -9,19 +9,20 @@ $(document).ready(function() {
 	thePerson = decodeURIComponent(thePerson);
 	console.log(thePerson);
 	
-	var theUrl = "https://thepubliclibrary.herokuapp.com/apis/persons/"+thePerson;
+	var theUrl = "http://localhost:8080/apis/persons/"+thePerson;
 	
 	$.ajax({
 		url: theUrl
 	}).then(function(data){
 		
-		$("#persondetails").append("Name: "+data.personName+"<br>");
-		$("#persondetails").append("Mobile: "+data.mobile+"<br><br>");
-		$("#persondetails").append("<b>BOOKS BORROWED</b><br>");
+		$("#personName").append(data.personName);
+		$("#mobile").append("Mobile: "+data.mobile);
 		
+		var i=0;
 		for(let value of data.listOfBooks){
 			
-			$("#persondetails").append("<a href='/books?book="+value.bookName+"'>"+value.bookName+"</a><br>");
+			$("#bookList").append("<th scope='row'>"+i+"</th><tr><td><a href='/books?book="+value.bookName+"'>"+value.bookName+"</a></td><td>"+value.author+"</td></tr>");
+			i=i+1;
 			
 		}
 		

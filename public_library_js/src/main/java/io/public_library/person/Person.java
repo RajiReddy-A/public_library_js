@@ -10,6 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -31,6 +32,13 @@ public class Person {
 	@Column(name="password")
 	private String password;
 	
+	@Transient
+	@JsonIgnore
+	private String passwordConfirm;
+	
+	/*@Column(name="enabled")
+	private int enabled;*/
+	
 	@ManyToMany(cascade = CascadeType.ALL)
 	@JoinTable(name="bookandperson",
 		joinColumns=@JoinColumn(name="personName"),
@@ -46,6 +54,7 @@ public class Person {
 		this.personName = personName;
 		this.mobile = mobile;
 		this.password = password;
+		//this.enabled = enabled;
 		
 	}
 
@@ -71,6 +80,22 @@ public class Person {
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+
+	/*public int getEnabled() {
+		return enabled;
+	}
+
+	public void setEnabled(int enabled) {
+		this.enabled = enabled;
+	}*/
+
+	public String getPasswordConfirm() {
+		return passwordConfirm;
+	}
+
+	public void setPasswordConfirm(String passwordConfirm) {
+		this.passwordConfirm = passwordConfirm;
 	}
 
 	@JsonIgnoreProperties("listOfPersons")

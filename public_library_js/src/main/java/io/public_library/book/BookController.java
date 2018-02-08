@@ -53,10 +53,10 @@ public class BookController {
 		return personService.getPerson(personName);
 	}
 	
-	@RequestMapping(value="/", method=RequestMethod.GET)
+	/*@RequestMapping(value="/", method=RequestMethod.GET)
 	public String homePage() {
 		return "allbooks";
-	}
+	}*/
 	
 	@RequestMapping(value="/books", method=RequestMethod.GET)
 	public String getBook() {
@@ -73,7 +73,7 @@ public class BookController {
 		return "persondetails";
 	}
 	
-	@RequestMapping(value="/signup", method=RequestMethod.GET)
+	/*@RequestMapping(value="/signup", method=RequestMethod.GET)
 	public String signup() {
 		return "signup";
 	}
@@ -81,6 +81,6 @@ public class BookController {
 	@RequestMapping(value="/login", method=RequestMethod.GET)
 	public String loginPage() {
 		return "login";
-	}
+	}*/
 
 }

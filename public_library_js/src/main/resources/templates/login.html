@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 
 	<head>
-		<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+		<link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.min.css}">
 	</head>
 	
 	<body>
@@ -30,13 +30,14 @@
 		  </div>
 		  <div class="form-group row">
 		   <div class="offset-2 col-sm-10">
-		  	<button type="submit" class="btn btn-primary">Submit</button>
+		  	<button type="submit" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" class="btn btn-primary">Submit</button>
 		   </div>
 		   </div>
 		</form>
 		
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-		<script type="text/javascript" src="js/bookdetails.js"></script>
+		<small th:text="${error}"></small>
+		
+		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	</body>
 	
 </html>

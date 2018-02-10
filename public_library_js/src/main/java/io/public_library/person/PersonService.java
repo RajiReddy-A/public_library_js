@@ -18,7 +18,7 @@ public class PersonService {
 		return persons;
 	}
 	
-	public Person getPerson(String personName) {
-		return personRepository.findOne(personName);
+	public Person getPerson(String username) {
+		return personRepository.findOne(username);
 	}
 }

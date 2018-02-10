@@ -15,7 +15,7 @@ $(document).ready(function() {
 		url: theUrl
 	}).then(function(data){
 		
-		$("#personName").append(data.personName);
+		$("#username").append(data.username);
 		$("#mobile").append("Mobile: "+data.mobile);
 		
 		var i=0;

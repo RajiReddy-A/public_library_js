@@ -1,5 +1,7 @@
 package io.public_library.person;
 
+import java.security.Principal;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -24,7 +26,10 @@ public class PersonController {
     private UserValidator userValidator;
 
     @RequestMapping(value = "/registration", method = RequestMethod.GET)
-    public String registration(Model model) {
+    public String registration(Model model, Principal user) {
+    	if (user != null) {
+    		return "redirect:/";
+    	}
         model.addAttribute("userForm", new Person());
 
         return "registration";
@@ -41,14 +46,18 @@ public class PersonController {
 
         userService.save(userForm);
 
-        securityService.autologin(userForm.getPersonName(), userForm.getPasswordConfirm());
+        securityService.autologin(userForm.getUsername(), userForm.getPasswordConfirm());
 
         return "redirect:/";
     }
 
     @RequestMapping(value = "/login", method = RequestMethod.GET)
-    public String login(Model model, String error, String logout) {
+    public String login(Model model, String error, String logout, Principal user) {
     	//model.addAttribute("userForm", new Person());
+    	if (user != null) {
+    		return "redirect:/";
+    	}
+    	
         if (error != null)
             model.addAttribute("error", "Your username and password is invalid.");
 
@@ -59,7 +68,8 @@ public class PersonController {
     }
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
-    public String welcome(Model model) {
+    public String welcome(Model model, Principal principal) {
+    	System.out.println(principal.getName());
         return "allbooks";
     }
 }

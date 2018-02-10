@@ -23,7 +23,7 @@ $(document).ready(function() {
 		var i=0;
 		for(let value of data.listOfPersons){
 			
-			$("#personList").append("<th scope='row'>"+i+"</th><tr><td><a href='/persons?person="+value.personName+"'>"+value.personName+"</a></td><td>"+value.mobile+"</td></tr>");
+			$("#personList").append("<th scope='row'>"+i+"</th><tr><td><a href='/persons?person="+value.username+"'>"+value.username+"</a></td><td>"+value.mobile+"</td></tr>");
 			i=i+1;
 			
 		}

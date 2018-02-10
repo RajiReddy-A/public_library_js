@@ -47,10 +47,10 @@ public class BookController {
 	}
 	
 	@CrossOrigin
-	@RequestMapping("/apis/persons/{personName}")
+	@RequestMapping("/apis/persons/{username}")
 	@ResponseBody
-	public Person getPerson(@PathVariable String personName) {
-		return personService.getPerson(personName);
+	public Person getPerson(@PathVariable String username) {
+		return personService.getPerson(username);
 	}
 	
 	/*@RequestMapping(value="/", method=RequestMethod.GET)

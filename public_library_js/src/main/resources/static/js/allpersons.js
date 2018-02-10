@@ -6,7 +6,7 @@ $(document).ready(function() {
 		
 		for(let value of data){
 			console.log(value);
-			$("#allpersons").append("<tr><td><a href='/persons?person="+value.personName+"'>"+value.personName+"</a></td><td>"+value.mobile+"</td></tr>");
+			$("#allpersons").append("<tr><td><a href='/persons?person="+value.username+"'>"+value.username+"</a></td><td>"+value.mobile+"</td></tr>");
 			
 		}
 	});

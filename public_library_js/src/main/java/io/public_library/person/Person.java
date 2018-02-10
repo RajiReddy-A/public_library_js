@@ -22,8 +22,8 @@ import io.public_library.book.Book;
 public class Person {
 	
 	@Id
-	@Column(name="personName")
-	private String personName;
+	@Column(name="username")
+	private String username;
 	
 	@Column(name="mobile")
 	private String mobile;
@@ -41,7 +41,7 @@ public class Person {
 	
 	@ManyToMany(cascade = CascadeType.ALL)
 	@JoinTable(name="bookandperson",
-		joinColumns=@JoinColumn(name="personName"),
+		joinColumns=@JoinColumn(name="username"),
 		inverseJoinColumns=@JoinColumn(name="bookName"))
 	private List<Book> listOfBooks = new ArrayList<Book>();
 	
@@ -49,21 +49,21 @@ public class Person {
 		
 	}
 	
-	public Person(String personName, String mobile, String password) {
+	public Person(String username, String mobile, String password) {
 		super();
-		this.personName = personName;
+		this.username = username;
 		this.mobile = mobile;
 		this.password = password;
 		//this.enabled = enabled;
 		
 	}
 
-	public String getPersonName() {
-		return personName;
+	public String getUsername() {
+		return username;
 	}
 
-	public void setPersonName(String personName) {
-		this.personName = personName;
+	public void setPersonName(String username) {
+		this.username = username;
 	}
 
 	public String getMobile() {

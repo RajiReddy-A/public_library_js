@@ -28,7 +28,7 @@ public class Person {
 	@Column(name="mobile")
 	private String mobile;
 	
-	@JsonIgnore
+	//@JsonIgnore
 	@Column(name="password")
 	private String password;
 	

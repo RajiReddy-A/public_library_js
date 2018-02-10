@@ -52,9 +52,9 @@ public class PersonController {
     }
 
     @RequestMapping(value = "/login", method = RequestMethod.GET)
-    public String login(Model model, String error, String logout, Principal user) {
+    public String login(Model model, String error, String logout, Principal principal) {
     	//model.addAttribute("userForm", new Person());
-    	if (user != null) {
+    	if (principal != null) {
     		return "redirect:/";
     	}
     	
@@ -62,13 +62,14 @@ public class PersonController {
             model.addAttribute("error", "Your username and password is invalid.");
 
         if (logout != null)
-            model.addAttribute("message", "You have been logged out successfully.");
+            model.addAttribute("logout", "You have been logged out successfully.");
 
         return "login";
     }
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String welcome(Model model, Principal principal) {
+    	System.out.println(principal);
     	System.out.println(principal.getName());
         return "allbooks";
     }

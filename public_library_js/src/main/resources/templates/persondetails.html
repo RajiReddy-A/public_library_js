@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 
 	<head>
 		<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
@@ -26,6 +26,8 @@
 		  
 		  </tbody>
 		</table>
+		
+		<small th:if="${message} == 'successfully borrowed'" th:text="'You have successfully borrowed the book'"></small>
 		
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 		<script type="text/javascript" src="js/persondetails.js"></script>

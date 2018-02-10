@@ -1,17 +1,22 @@
 package io.public_library.book;
 
+import java.security.Principal;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+import io.public_library.auth.service.UserServiceImpl;
 import io.public_library.person.Person;
 import io.public_library.person.PersonService;
 
@@ -22,7 +27,7 @@ public class BookController {
 	private BookService bookService;
 	
 	@Autowired
-	private PersonService personService;
+	private UserServiceImpl userServiceImpl;
 	
 	@CrossOrigin
 	@RequestMapping(value="/apis/allbooks", method=RequestMethod.GET)
@@ -36,7 +41,7 @@ public class BookController {
 	@ResponseBody
 	//@JsonIgnoreProperties("password")
 	public List<Person> allPersonsApi() {
-		return personService.getAllPersons();
+		return userServiceImpl.getAllPersons();
 	}
 	
 	@CrossOrigin
@@ -50,7 +55,7 @@ public class BookController {
 	@RequestMapping("/apis/persons/{username}")
 	@ResponseBody
 	public Person getPerson(@PathVariable String username) {
-		return personService.getPerson(username);
+		return userServiceImpl.findOne(username);
 	}
 	
 	/*@RequestMapping(value="/", method=RequestMethod.GET)
@@ -73,14 +78,35 @@ public class BookController {
 		return "persondetails";
 	}
 	
-	/*@RequestMapping(value="/signup", method=RequestMethod.GET)
-	public String signup() {
-		return "signup";
+	@RequestMapping(value="/borrowbook", method=RequestMethod.GET)
+	public String borrowBook(Model model) {
+		model.addAttribute("book", new Book());
+		return "borrowbook";
 	}
 	
-	@RequestMapping(value="/login", method=RequestMethod.GET)
-	public String loginPage() {
-		return "login";
-	}*/
+	@RequestMapping(value="/borrowbook", method=RequestMethod.POST)
+	public String borrowBook(@ModelAttribute Book book, Principal principal, RedirectAttributes redirectAttrs) {
+		
+		if(principal == null) {
+			redirectAttrs.addFlashAttribute("message", "logintoborrow");
+			return "redirect:/login";
+		}
+		
+		String borrowStatus = bookService.borrowBook(book, principal.getName());
+		
+		if(borrowStatus.equals("success")) {
+			redirectAttrs.addFlashAttribute("message", "successfully borrowed");
+			return "redirect:/persons?person="+principal.getName();
+		}
+		else if(borrowStatus.equals("same book already borrowed")) {
+			redirectAttrs.addFlashAttribute("message", "same book already borrowed");
+			return "redirect:/borrowbook";
+		}
+		else {
+			redirectAttrs.addFlashAttribute("message", "book not available");
+			return "redirect:/borrowbook";
+		}
+				
+	}
 
 }

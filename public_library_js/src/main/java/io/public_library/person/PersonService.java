@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class PersonService {
 
-	@Autowired
+	/*@Autowired
 	private PersonRepository personRepository;
 	
 	public List<Person> getAllPersons(){
@@ -20,5 +20,5 @@ public class PersonService {
 	
 	public Person getPerson(String username) {
 		return personRepository.findOne(username);
-	}
+	}*/
 }

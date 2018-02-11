@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+</head>
+
+<body>
+
+	<nav th:replace="common/navbar :: common-navbar" />
+
+	<div class="container mt-4">
+		<div class="row justify-content-center">
+			<div class="col-md-6 col-md-offset-6">
+				<form th:action="@{/returnbook}" method="post">
+					<div class="form-group row">
+						<label for="bookName" class="col-sm-2 col-form-label">Book</label>
+						<div class="col-sm-10">
+							<select type="text" class="form-control"
+								th:field="${book.bookName}" id="bookName" required>
+								<option value="">SELECT A BOOK TO RETURN!</option>
+							</select>
+						</div>
+					</div>
+					<div class="form-group row">
+						<div class="offset-2 col-sm-10">
+							<button type="submit" th:name="${_csrf.parameterName}"
+								th:value="${_csrf.token}" class="btn btn-primary">Submit</button>
+						</div>
+					</div>
+
+					<small th:if="${message} == 'book not borrowed'"
+						th:text="'You did not borrow this book!'"></small>
+				</form>
+			</div>
+		</div>
+	</div>
+
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script type="text/javascript" src="js/returnbook.js"></script>
+</body>
+
+</html>

@@ -9,12 +9,14 @@
 		
 		<nav th:replace="common/navbar :: common-navbar"/>
 		<div class="jumbotron text-center">
-			<h1 id="username"></h1>
+			<h1 id="usernameh1"></h1>
 			<h2 id="mobile"></h2>
+			<small th:if="${message} == 'successfully borrowed'" th:text="'You have successfully borrowed the book'"></small>
+			<small th:if="${message} == 'successfully returned'" th:text="'You have successfully returned the book'"></small>
 		</div>
 		
 		<h3 class="text-center">BOOKS BORROWED</h3>
-		<table class="table">
+		<table class="table text-center">
 		  <thead>
 		    <tr>
 		      <th>#</th>
@@ -27,7 +29,6 @@
 		  </tbody>
 		</table>
 		
-		<small th:if="${message} == 'successfully borrowed'" th:text="'You have successfully borrowed the book'"></small>
 		
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 		<script type="text/javascript" src="js/persondetails.js"></script>

@@ -54,4 +54,28 @@ public class BookService {
 		}
 		
 	}
+	
+	@Transactional
+	public String returnBook(Book book, String username) {
+		Book dbBook = bookRepository.findOne(book.getBookName());
+		Person dbPerson = personRepository.findOne(username);
+		
+		List<Book> booksList = dbPerson.getListOfBooks();
+		List<Person> personsList = dbBook.getListOfPersons();
+		Boolean isItBorrowed = booksList.contains(dbBook);
+		if(isItBorrowed) {
+			booksList.remove(dbBook);
+			personsList.remove(dbPerson);
+			dbPerson.setListOfBooks(booksList);
+			dbBook.setListOfPersons(personsList);
+			dbBook.setCopiesAvailable(dbBook.getCopiesAvailable()+1);
+			bookRepository.save(dbBook);
+			return "success";
+		}
+		else {
+			return "book not borrowed";
+		}
+		
+	}
+	
 }

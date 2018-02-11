@@ -108,5 +108,32 @@ public class BookController {
 		}
 				
 	}
+	
+	@RequestMapping(value="/returnbook", method=RequestMethod.GET)
+	public String returnBook(Model model) {
+		model.addAttribute("book", new Book());
+		return "returnbook";
+	}
+	
+	@RequestMapping(value="/returnbook", method=RequestMethod.POST)
+	public String returnBook(@ModelAttribute Book book, Principal principal, RedirectAttributes redirectAttrs) {
+		
+		if(principal == null) {
+			redirectAttrs.addFlashAttribute("message", "logintoreturn");
+			return "redirect:/login";
+		}
+		
+		String returnStatus = bookService.returnBook(book, principal.getName());
+		
+		if(returnStatus.equals("success")) {
+			redirectAttrs.addFlashAttribute("message", "successfully returned");
+			return "redirect:/persons?person="+principal.getName();
+		}
+		else {
+			redirectAttrs.addFlashAttribute("message", "book not borrowed");
+			return "redirect:/returnbook";
+		}
+		
+	}
 
 }

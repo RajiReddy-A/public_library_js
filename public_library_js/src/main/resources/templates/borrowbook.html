@@ -9,6 +9,9 @@
 	
 		<nav th:replace="common/navbar :: common-navbar"/>
 		
+		<div class="container mt-4">
+		<div class="row justify-content-center">
+		<div class="col-md-6 col-md-offset-6">
 		<form th:action="@{/borrowbook}" method="post">
 		  <div class="form-group row">
 		    <label for="bookName" class="col-sm-2 col-form-label">Book</label>
@@ -23,10 +26,14 @@
 		  	<button type="submit" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" class="btn btn-primary">Submit</button>
 		   </div>
 		   </div>
+		   
+		   <small th:if="${message} == 'same book already borrowed'" th:text="'This book is in your borrowed list already!'"></small>
+		   <small th:if="${message} == 'book not available'" th:text="'This book is not available at the moment'"></small> 
 		</form>
+		</div>
+		</div>
+		</div>
 		
-		<small th:if="${message} == 'same book already borrowed'" th:text="'This book is in your borrowed list already!'"></small>
-		<small th:if="${message} == 'book not available'" th:text="'This book is not available at the moment'"></small> 
 		
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 		<script type="text/javascript" src="js/borrowbook.js"></script>

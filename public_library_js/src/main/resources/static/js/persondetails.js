@@ -15,13 +15,13 @@ $(document).ready(function() {
 		url: theUrl
 	}).then(function(data){
 		
-		$("#username").append(data.username);
+		$("#usernameh1").append(data.username);
 		$("#mobile").append("Mobile: "+data.mobile);
 		
-		var i=0;
+		var i=1;
 		for(let value of data.listOfBooks){
 			
-			$("#bookList").append("<th scope='row'>"+i+"</th><tr><td><a href='/books?book="+value.bookName+"'>"+value.bookName+"</a></td><td>"+value.author+"</td></tr>");
+			$("#bookList").append("<tr><th scope='row'>"+i+"</th><td><a href='/books?book="+value.bookName+"'>"+value.bookName+"</a></td><td>"+value.author+"</td></tr>");
 			i=i+1;
 			
 		}

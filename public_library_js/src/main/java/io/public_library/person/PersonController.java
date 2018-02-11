@@ -67,10 +67,8 @@ public class PersonController {
         return "login";
     }
 
-    @RequestMapping(value = "/", method = RequestMethod.GET)
+    @RequestMapping(value = {"/", "allbooks"}, method = RequestMethod.GET)
     public String welcome(Model model, Principal principal) {
-    	System.out.println(principal);
-    	System.out.println(principal.getName());
         return "allbooks";
     }
 }

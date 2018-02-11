@@ -9,29 +9,32 @@
 	
 		<nav th:replace="common/navbar :: common-navbar"/>
 		
+		<div class="container mt-4">
+		<div class="row justify-content-center">
+		<div class="col-md-6 col-md-offset-6">
 		<form th:action="@{/registration}" method="post">
 		  <div class="form-group row">
 		    <label for="inputUsername" class="col-sm-2 col-form-label">Username</label>
-		    <div class="col-sm-10">
+		    <div class="col-md-6">
 		    	<input type="text" class="form-control" name="username" th:field="${userForm.username}" id="inputUsername" value="" placeholder="Username" required>
 		  	</div>
 		  </div>
 		  <div class="form-group row">
 		    <label for="mobile" class="col-sm-2 col-form-label">Mobile</label>
-		    <div class="col-sm-10">
+		    <div class="col-md-6">
 		    	<input type="text" class="form-control" name="mobile" th:field="${userForm.mobile}" id="inputMobile" placeholder="Mobile" required>
 		  	</div>
 		  </div>
 		  <div class="form-group row">
 		    <label for="inputPassword" class="col-sm-2 col-form-label">Password</label>
-		    <div class="col-sm-10">
+		    <div class="col-md-6">
 		    	<input type="password" class="form-control" name="password" th:field="${userForm.password}" id="inputPassword" placeholder="Password" required>
 		  	</div>
 		  </div>
 		  <div class="form-group row">
 		    <label for="inputPasswordConfirm" class="col-sm-2 col-form-label">Confirm Password</label>
-		    <div class="col-sm-10">
-		    	<input type="password" class="form-control" name="passwordConfirm" th:field="${userForm.passwordConfirm}" id="inputPassword" placeholder="Password" required>
+		    <div class="col-md-6">
+		    	<input type="password" class="form-control" name="passwordConfirm" th:field="${userForm.passwordConfirm}" id="inputPasswordConfirm" placeholder="Password" required>
 		  	</div>
 		  </div>
 		  <div class="form-group row">
@@ -39,7 +42,12 @@
 		  	<button type="submit" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" class="btn btn-primary">Submit</button>
 		   </div>
 		   </div>
+		   
+		   <small th:text="${error}"></small>
 		</form>
+		</div>
+		</div>
+		</div>
 		
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	</body>

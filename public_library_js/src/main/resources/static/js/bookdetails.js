@@ -20,10 +20,10 @@ $(document).ready(function() {
 		$("#totalCopies").append("Total copies: "+data.copiesTotal);
 		$("#availableCopies").append("Available copies: "+data.copiesAvailable);
 		
-		var i=0;
+		var i=1;
 		for(let value of data.listOfPersons){
 			
-			$("#personList").append("<th scope='row'>"+i+"</th><tr><td><a href='/persons?person="+value.username+"'>"+value.username+"</a></td><td>"+value.mobile+"</td></tr>");
+			$("#personList").append("<tr><th scope='row'>"+i+"</th><td><a href='/persons?person="+value.username+"'>"+value.username+"</a></td><td>"+value.mobile+"</td></tr>");
 			i=i+1;
 			
 		}

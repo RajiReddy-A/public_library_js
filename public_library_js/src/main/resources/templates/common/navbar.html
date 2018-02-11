@@ -1,12 +1,22 @@
 <nav th:fragment="common-navbar" class="navbar navbar-expand-sm bg-dark navbar-dark">
 	<ul class="navbar-nav mr-auto">
-	    <li class="nav-item active">
-	      <a class="nav-link" th:href="@{/}">ALL BOOKS</a>
+	    <li class="nav-item">
+	      <a class="nav-link" th:href="@{/}">BOOKS</a>
+	    </li>
+	    <li class="nav-item">
+	      <a class="nav-link" th:href="@{/allpersons}">USERS</a>
+	    </li>
+	    <li class="nav-item">
+	      <a class="nav-link" th:href="@{/borrowbook}">BORROW</a>
+	    </li>
+	    <li class="nav-item">
+	      <a class="nav-link" th:href="@{/returnbook}">RETURN</a>
 	    </li>
 	 </ul>
+	 
 	 <ul class="navbar-nav ml-auto" sec:authorize="isAuthenticated()">
 	    <li class="nav-item">
-	      <a class="nav-link" href="#"><span sec:authentication="name"></span></a>
+	      <a class="nav-link" href="#"><span id="username" sec:authentication="name"></span></a>
 	    </li>
 	    <li class="nav-item">
 	    	<a class="nav-link" th:href="@{/logout}">Log out</a>

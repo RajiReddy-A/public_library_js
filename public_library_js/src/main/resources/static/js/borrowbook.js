@@ -6,7 +6,7 @@ $(document).ready(function() {
 		
 		for(let value of data){
 			console.log(value);
-			$("#bookName").append("<option value="+value.bookName+">"+value.bookName+"(Author: "+value.author+")</option>");
+			$("#bookName").append("<option value='"+value.bookName+"'>"+value.bookName+"(Author: "+value.author+")</option>");
 			
 		}
 	});

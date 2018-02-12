@@ -27,8 +27,8 @@
 		   </div>
 		   </div>
 		   
-		   <small th:if="${message} == 'same book already borrowed'" th:text="'This book is in your borrowed list already!'"></small>
-		   <small th:if="${message} == 'book not available'" th:text="'This book is not available at the moment'"></small> 
+		   <small class="alert alert-danger" th:if="${message} == 'same book already borrowed'" th:text="'This book is in your borrowed list already!'"></small>
+		   <small class="alert alert-danger" th:if="${message} == 'book not available'" th:text="'This book is not available at the moment'"></small> 
 		</form>
 		</div>
 		</div>

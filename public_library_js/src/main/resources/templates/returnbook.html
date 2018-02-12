@@ -29,7 +29,7 @@
 						</div>
 					</div>
 
-					<small th:if="${message} == 'book not borrowed'"
+					<small class="alert alert-danger" th:if="${message} == 'book not borrowed'"
 						th:text="'You did not borrow this book!'"></small>
 				</form>
 			</div>

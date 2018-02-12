@@ -13,28 +13,28 @@
 		<div class="row justify-content-center">
 		<div class="col-md-6 col-md-offset-6">
 		<form th:action="@{/registration}" method="post">
-		  <div class="form-group row">
+   		<div class="form-group row">
 		    <label for="inputUsername" class="col-sm-2 col-form-label">Username</label>
 		    <div class="col-md-6">
-		    	<input type="text" class="form-control" name="username" th:field="${userForm.username}" id="inputUsername" value="" placeholder="Username" required>
+		   		<input type="text" class="form-control" th:name="username" th:field="${userForm.username}" id="inputUsername" value="" placeholder="Username">
 		  	</div>
 		  </div>
 		  <div class="form-group row">
 		    <label for="mobile" class="col-sm-2 col-form-label">Mobile</label>
 		    <div class="col-md-6">
-		    	<input type="text" class="form-control" name="mobile" th:field="${userForm.mobile}" id="inputMobile" placeholder="Mobile" required>
+		    	<input type="text" class="form-control" th:name="mobile" th:field="${userForm.mobile}" id="inputMobile" placeholder="Mobile">
 		  	</div>
 		  </div>
 		  <div class="form-group row">
 		    <label for="inputPassword" class="col-sm-2 col-form-label">Password</label>
 		    <div class="col-md-6">
-		    	<input type="password" class="form-control" name="password" th:field="${userForm.password}" id="inputPassword" placeholder="Password" required>
+		    	<input type="password" class="form-control" th:name="password" th:field="${userForm.password}" id="inputPassword" placeholder="Password">
 		  	</div>
 		  </div>
 		  <div class="form-group row">
 		    <label for="inputPasswordConfirm" class="col-sm-2 col-form-label">Confirm Password</label>
 		    <div class="col-md-6">
-		    	<input type="password" class="form-control" name="passwordConfirm" th:field="${userForm.passwordConfirm}" id="inputPasswordConfirm" placeholder="Password" required>
+		    	<input type="password" class="form-control" th:name="passwordConfirm" th:field="${userForm.passwordConfirm}" id="inputPasswordConfirm" placeholder="Password">
 		  	</div>
 		  </div>
 		  <div class="form-group row">
@@ -43,7 +43,10 @@
 		   </div>
 		   </div>
 		   
-		   <small th:text="${error}"></small>
+		   <p class="alert alert-danger" th:if="${message1} == 'Size.userForm.username'" th:text="'Username should be between 6 and 32 characters'"></p>
+		   <p class="alert alert-danger" th:if="${message2} == 'Duplicate.userForm.username'" th:text="'Someone already has that username.'"></p>
+		   <p class="alert alert-danger" th:if="${message3} == 'Size.userForm.password'" th:text="'Password should be least 8 characters.'"></p>
+		   <p class="alert alert-danger" th:if="${message4} == 'Diff.userForm.passwordConfirm'" th:text="'These passwords dont match.'"></p>
 		</form>
 		</div>
 		</div>

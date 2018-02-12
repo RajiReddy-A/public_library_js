@@ -62,7 +62,7 @@ public class Person {
 		return username;
 	}
 
-	public void setPersonName(String username) {
+	public void setUsername(String username) {
 		this.username = username;
 	}
 

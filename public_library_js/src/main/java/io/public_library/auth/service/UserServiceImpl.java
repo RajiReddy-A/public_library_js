@@ -14,22 +14,15 @@ import io.public_library.person.PersonRepository;
 public class UserServiceImpl implements UserService {
     @Autowired
     private PersonRepository personRepository;
-    //@Autowired
-    //private RoleRepository roleRepository;
+  
     @Autowired
     private BCryptPasswordEncoder bCryptPasswordEncoder;
 
     @Override
     public void save(Person user) {
         user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
-        //user.setRoles(new HashSet<>(roleRepository.findAll()));
         personRepository.save(user);
     }
-
-    /*@Override
-    public Person findByUsername(String username) {
-        return personRepository.findOne(username);
-    }*/
 
 	@Override
 	public Person findOne(String username) {

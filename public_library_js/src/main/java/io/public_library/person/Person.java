@@ -36,9 +36,6 @@ public class Person {
 	@JsonIgnore
 	private String passwordConfirm;
 	
-	/*@Column(name="enabled")
-	private int enabled;*/
-	
 	@ManyToMany(cascade = CascadeType.ALL)
 	@JoinTable(name="bookandperson",
 		joinColumns=@JoinColumn(name="username"),
@@ -54,7 +51,6 @@ public class Person {
 		this.username = username;
 		this.mobile = mobile;
 		this.password = password;
-		//this.enabled = enabled;
 		
 	}
 
@@ -81,14 +77,6 @@ public class Person {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-
-	/*public int getEnabled() {
-		return enabled;
-	}
-
-	public void setEnabled(int enabled) {
-		this.enabled = enabled;
-	}*/
 
 	public String getPasswordConfirm() {
 		return passwordConfirm;

@@ -31,10 +31,10 @@
 		   </div>
 		   </div>
 		   
-		    <small class="alert alert-danger" th:text="${error}"></small>
-			<small class="alert alert-success" th:text="${logout}"></small>
-			<small class="alert alert-danger" th:if="${message} == 'logintoborrow'" th:text="'You should sign in to borrow the book'"></small>
-			<small class="alert alert-danger" th:if="${message} == 'logintoreturn'" th:text="'You should sign in to return the book'"></small>
+		    <p class="text-danger" th:text="${error}"></p>
+			<p class="text-success" th:text="${logout}"></p>
+			<p class="alert alert-danger" th:if="${message} == 'logintoborrow'" th:text="'You should sign in to borrow the book'"></p>
+			<p class="alert alert-danger" th:if="${message} == 'logintoreturn'" th:text="'You should sign in to return the book'"></p>
 		</form>
 		</div>
 		</div>

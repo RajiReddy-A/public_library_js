@@ -11,8 +11,8 @@
 		<div class="jumbotron text-center">
 			<h1 id="usernameh1"></h1>
 			<h2 id="mobile"></h2>
-			<small th:if="${message} == 'successfully borrowed'" th:text="'You have successfully borrowed the book'"></small>
-			<small th:if="${message} == 'successfully returned'" th:text="'You have successfully returned the book'"></small>
+			<small class="text-success" th:if="${message} == 'successfully borrowed'" th:text="'You have successfully borrowed the book'"></small>
+			<small class="text-success" th:if="${message} == 'successfully returned'" th:text="'You have successfully returned the book'"></small>
 		</div>
 		
 		<h3 class="text-center">BOOKS BORROWED</h3>

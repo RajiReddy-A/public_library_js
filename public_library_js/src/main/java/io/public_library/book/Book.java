@@ -30,7 +30,6 @@ public class Book {
 	private int    copiesAvailable;
 	
 	@ManyToMany(mappedBy="listOfBooks", cascade = CascadeType.ALL)
-	//@JsonIgnore
 	private List<Person> listOfPersons = new ArrayList<Person>();
 	
 	public Book() {

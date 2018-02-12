@@ -13,12 +13,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-
 import io.public_library.auth.service.UserServiceImpl;
 import io.public_library.person.Person;
-import io.public_library.person.PersonService;
 
 @Controller
 public class BookController {
@@ -39,7 +35,6 @@ public class BookController {
 	@CrossOrigin
 	@RequestMapping(value="/apis/allpersons", method=RequestMethod.GET)
 	@ResponseBody
-	//@JsonIgnoreProperties("password")
 	public List<Person> allPersonsApi() {
 		return userServiceImpl.getAllPersons();
 	}
@@ -57,11 +52,6 @@ public class BookController {
 	public Person getPerson(@PathVariable String username) {
 		return userServiceImpl.findOne(username);
 	}
-	
-	/*@RequestMapping(value="/", method=RequestMethod.GET)
-	public String homePage() {
-		return "allbooks";
-	}*/
 	
 	@RequestMapping(value="/books", method=RequestMethod.GET)
 	public String getBook() {

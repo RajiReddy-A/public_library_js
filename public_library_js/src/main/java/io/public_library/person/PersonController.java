@@ -69,7 +69,7 @@ public class PersonController {
         	        
         	    }
 			}
-        	//redirectAttrs.addFlashAttribute("errors", bindingResult.);
+       
             return "redirect:/registration";
         }
 
@@ -82,7 +82,7 @@ public class PersonController {
 
     @RequestMapping(value = "/login", method = RequestMethod.GET)
     public String login(Model model, String error, String logout, Principal principal) {
-    	//model.addAttribute("userForm", new Person());
+    	
     	if (principal != null) {
     		return "redirect:/";
     	}

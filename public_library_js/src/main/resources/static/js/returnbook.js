@@ -3,7 +3,7 @@ $(document).ready(function() {
 	var username = $("#username").text();
 	
 	$.ajax({
-		url: "http://localhost:8080/apis/persons/"+username
+		url: window.location.protocol + "//" + window.location.host +"/apis/persons/"+username
 	}).then(function(data){
 		
 		for(let value of data.listOfBooks){

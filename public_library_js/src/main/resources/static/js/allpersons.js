@@ -1,7 +1,7 @@
 $(document).ready(function() {
   
 	$.ajax({
-		url: "http://localhost:8080/apis/allpersons"
+		url: window.location.protocol + "//" + window.location.host +"/apis/allpersons"
 	}).then(function(data){
 		
 		for(let value of data){

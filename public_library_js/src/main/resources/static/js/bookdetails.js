@@ -9,7 +9,7 @@ $(document).ready(function() {
 	theBook = decodeURIComponent(theBook);
 	console.log(theBook);
 	
-	var theUrl = "http://localhost:8080/apis/books/"+theBook;
+	var theUrl = window.location.protocol + "//" + window.location.host +"/apis/books/"+theBook;
 	
 	$.ajax({
 		url: theUrl

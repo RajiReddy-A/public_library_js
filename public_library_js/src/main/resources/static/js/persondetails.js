@@ -9,7 +9,7 @@ $(document).ready(function() {
 	thePerson = decodeURIComponent(thePerson);
 	console.log(thePerson);
 	
-	var theUrl = "http://localhost:8080/apis/persons/"+thePerson;
+	var theUrl = window.location.protocol + "//" + window.location.host +"/apis/persons/"+thePerson;
 	
 	$.ajax({
 		url: theUrl
